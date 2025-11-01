@@ -9,7 +9,7 @@ declare global {
 export const prismaInstance = global.prisma || new PrismaClient();
 
 if (process.env.NODE_ENV !== 'production') {
-  global.prisma = prisma;
+  global.prisma = prismaInstance;
 }
 
 export default prismaInstance;

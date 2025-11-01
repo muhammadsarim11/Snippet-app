@@ -1,12 +1,13 @@
-"use client"
-import React, { useState } from 'react'
+
+import { redirect } from 'next/navigation'
 import prismaInstance from '../../prisma.config'
+import { RedirectType } from 'next/navigation'
 
 const page = () => {
 
-  const HandleSubmit = async (FormData:any) => {
+  const HandleSubmit = async (FormData:FormData) => {
     "use server"
-    FormData.preventDefault()
+
     const Title = FormData.get("title") as string
     const Snippet = FormData.get("snippet") as string
     console.log(Title, Snippet)
@@ -19,13 +20,14 @@ const snippet = await prismaInstance.snippet.create({
 })
 
 console.log(snippet)
+redirect("/home")
   }
   return (
     <div className='min-h-screen w-screen px-5 py-3'>
      <div className=''>
       <h1 className='text-center text-3xl font-bold'>Write Your Snippets!😉</h1>
       <div className='flex flex-col justify-center items-center mt-5 gap-4 p-5'>
-        <form className='flex flex-col justify-center items-center mt-5 gap-4 p-5' action="" onSubmit={HandleSubmit}>
+        <form className='flex flex-col justify-center items-center mt-5 gap-4 p-5' action={HandleSubmit}>
           <input 
         
           name="title"
