@@ -1,48 +1,35 @@
-
-import { redirect } from 'next/navigation'
+import React from 'react'
 import prismaInstance from '../../prisma.config'
-import { RedirectType } from 'next/navigation'
+import Link from 'next/link'
 
-const page = () => {
+const page = async () => {
 
-  const HandleSubmit = async (FormData:FormData) => {
-    "use server"
+  const snippet = await prismaInstance.snippet.findMany()
+  console.log(snippet)
 
-    const Title = FormData.get("title") as string
-    const Snippet = FormData.get("snippet") as string
-    console.log(Title, Snippet)
-
-const snippet = await prismaInstance.snippet.create({
-  data: {
-    title: Title,
-    code: Snippet
-  }
-})
-
-console.log(snippet)
-redirect("/home")
-  }
   return (
-    <div className='min-h-screen w-screen px-5 py-3'>
-     <div className=''>
-      <h1 className='text-center text-3xl font-bold'>Write Your Snippets!😉</h1>
-      <div className='flex flex-col justify-center items-center mt-5 gap-4 p-5'>
-        <form className='flex flex-col justify-center items-center mt-5 gap-4 p-5' action={HandleSubmit}>
-          <input 
-        
-          name="title"
-          type="text" className='w-fit border border-gray-400 px-4 py-2 rounded'  />
-        <textarea
-        name="snippet"
-        className=' border border-gray-400 px-4 py-2 rounded h-64 w-72' id=""></textarea>
-        <button className=' cursor-pointer w-fit border bg-black text-amber-50 border-gray-400 px-4 py-2 rounded'>Create</button>
-        </form>
+    <div className='min-h-screen w-full bg-gray-200 px-5 py-3'>
+      <div className='p-5 flex justify-between items-center'>
+        <h2 className='font-medium text-2xl text-gray-900'>Home </h2>
+        <Link href='/snippet' className='px-3 py-2 bg-black text-white rounded '>Create Snippet</Link>
+        </div>
+{
+  snippet!==null ? snippet.map((snip)=>{
+    return(
+      <div key={snip.id} className='mt-4 m-5 p-4 bg-white rounded shadow flex justify-between items-center'>
+        <h3 className='font-normal  text-xl text-gray-800'>{snip.title}</h3>
+<Link href={`/snippet/${snip.id}`} className='text-gray-500 hover:underline'>View Snippet</Link>
       </div>
-      <div></div>
-     </div>
+    )
+  })
+  : <div className='mt-4 p-4 bg-white rounded shadow flex flex-col gap-4'>
+        <h3 className='font-normal  text-xl text-gray-800'>No Snippets Found</h3>
+    </div >
+}
+
+      
     </div>
   )
 }
 
 export default page
-
