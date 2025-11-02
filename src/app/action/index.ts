@@ -26,5 +26,7 @@ export  const DeleteSnippet = async (id: number) => {
         where: { id },
     })
 
+    redirect("/")
+
     
 }
