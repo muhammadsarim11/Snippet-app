@@ -1,5 +1,6 @@
 import React from 'react'
 import prismaInstance from '../../../../prisma.config'
+import Link from 'next/link'
 
 const page = async ({  params,
 }: {
@@ -28,9 +29,11 @@ const snippet = await prismaInstance.snippet.findUnique({
         <h3 className='font-medium text-xl text-gray-800'>{snippet.title}</h3>
         <pre className='bg-gray-200 p-4 rounded overflow-x-auto'><code>{snippet.code}</code></pre>
 <div className='flex gap-2'>
-            <button className='bg-black text-white px-4 py-2 rounded hover:bg-gray-600 w-fit'>
-Edit
-        </button>
+<Link href={`/snippet/${snippet.id}/edit`}>
+    <button className='bg-black text-white px-4 py-2 rounded hover:bg-gray-600 w-fit'>
+        Edit
+    </button>
+</Link>
         <button className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-fit'>
 Delete
         </button>

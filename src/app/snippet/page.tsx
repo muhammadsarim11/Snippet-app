@@ -21,7 +21,7 @@ const snippet = await prismaInstance.snippet.create({
 })
 
 console.log(snippet)
-redirect("/snippet")
+redirect("/")
   }
   return (
     <div className='min-h-screen w-screen px-5 py-3'>
@@ -33,10 +33,12 @@ redirect("/snippet")
         
           name="title"
           type="text" className='w-fit border border-gray-400 px-4 py-2 rounded'  />
-   
-    <Editor>
-      
-    </Editor>
+ <textarea
+ className='w-96 h-64 border border-gray-400 px-4 py-2 rounded'
+ name="snippet" id=""></textarea>
+
+          <button type='submit' className='px-3 py-2 bg-black text-white rounded cursor-pointer'>Save Snippet</button>  
+    
      </form>
       </div>
       <div></div>
