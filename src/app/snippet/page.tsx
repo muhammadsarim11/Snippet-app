@@ -24,25 +24,32 @@ console.log(snippet)
 redirect("/")
   }
   return (
-    <div className='min-h-screen w-screen px-5 py-3'>
-     <div className=''>
-      <h1 className='text-center text-3xl font-bold'>Write Your Snippets!😉</h1>
-      <div className='flex flex-col justify-center items-center mt-5 gap-4 p-5'>
-        <form className='flex flex-col justify-center items-center mt-5 gap-4 p-5' action={HandleSubmit}>
-          <input 
-        
-          name="title"
-          type="text" className='w-fit border border-gray-400 px-4 py-2 rounded'  />
- <textarea
- className='w-96 h-64 border border-gray-400 px-4 py-2 rounded'
- name="snippet" id=""></textarea>
+    <div className='min-h-screen w-full max-w-full px-4 sm:px-6 py-3'>
+      <div className='max-w-4xl mx-auto'>
+        <h1 className='text-center text-2xl sm:text-3xl font-bold mb-6'>Write Your Snippets!😉</h1>
+        <div className='w-full max-w-3xl mx-auto'>
+          <form className='flex flex-col gap-4 w-full' action={HandleSubmit}>
+            <input 
+              placeholder='Enter title'
+              name="title"
+              type="text"  
+              className='w-full max-w-md mx-auto border border-gray-400 px-4 py-2 rounded'  
+            />
+            <textarea
+              className='w-full min-h-[200px] sm:min-h-[300px] border border-gray-400 px-4 py-2 rounded resize-y'
+              name="snippet" 
+              placeholder="Enter your code snippet here..."
+            ></textarea>
 
-          <button type='submit' className='px-3 py-2 bg-black text-white rounded cursor-pointer'>Save Snippet</button>  
-    
-     </form>
+            <button 
+              type='submit' 
+              className='w-full sm:w-auto px-6 py-2 bg-black text-white rounded cursor-pointer hover:bg-gray-800 transition-colors mx-auto'
+            >
+              Save Snippet
+            </button>  
+          </form>
+        </div>
       </div>
-      <div></div>
-     </div>
     </div>
   )
 }
