@@ -14,7 +14,7 @@ const page = async () => {
         <Link href='/snippet' className='px-3 py-2 bg-black text-white rounded '>Create Snippet</Link>
         </div>
 {
-  snippet!==null ? snippet.map((snip)=>{
+  snippet.length>0 ? snippet.map((snip)=>{
     return(
       <div key={snip.id} className='mt-4 m-5 p-4 bg-white rounded shadow flex justify-between items-center'>
         <h3 className='font-normal  text-xl text-gray-800'>{snip.title}</h3>
@@ -22,7 +22,7 @@ const page = async () => {
       </div>
     )
   })
-  : <div className='mt-4 p-4 bg-white rounded shadow flex flex-col gap-4'>
+  : <div className='mt-4 m-5 p-4 bg-white rounded shadow flex flex-col gap-4'>
         <h3 className='font-normal  text-xl text-gray-800'>No Snippets Found</h3>
     </div >
 }

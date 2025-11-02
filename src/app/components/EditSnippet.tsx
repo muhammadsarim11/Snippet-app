@@ -2,7 +2,8 @@
 import { Editor } from '@monaco-editor/react'
 import React, { useState } from 'react'
 import type { Snippet } from '@prisma/client'
-import { SaveSnippet } from '../action'
+import { SaveSnippet } from '../action/index'
+
 interface EditSnippetProps {
   snippet: Snippet | null
 }
@@ -20,6 +21,7 @@ const EditSnippet = ({ snippet }: EditSnippetProps) => {
   const handleChange = (value: string = "") => {
     setCode(value)
   }
+
 
   // Use the server action directly as the form action. The form will
   // send a FormData object to the server action. We include a hidden

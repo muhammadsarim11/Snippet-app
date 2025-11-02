@@ -19,3 +19,12 @@ export async function SaveSnippet(formData: FormData) {
 
     redirect(`/snippet/${id}`)
 }
+
+
+export  const DeleteSnippet = async (id: number) => {
+    await prismaInstance.snippet.delete({
+        where: { id },
+    })
+
+    
+}
