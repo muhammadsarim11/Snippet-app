@@ -1,7 +1,7 @@
 
 "use server"
 import { redirect } from "next/navigation"
-import prismaInstance from "../../../prisma.config"
+import prismaInstance from "../../../prismaClient"
 
 // Server action that accepts a FormData object from a client form
 export async function SaveSnippet(formData: FormData) {

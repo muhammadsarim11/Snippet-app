@@ -1,6 +1,6 @@
 
 import { redirect } from 'next/navigation'
-import prismaInstance from '../../../prisma.config'
+import prismaInstance from '../../../prismaClient'
 import { RedirectType } from 'next/navigation'
 import { Editor } from '@monaco-editor/react'
 

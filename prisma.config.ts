@@ -1,15 +1,4 @@
+// Prisma CLI only needs environment variables loaded from .env
+// Keep this file minimal so `prisma generate` and other CLI commands
+// can parse it without executing application code.
 import 'dotenv/config';
-import { PrismaClient } from '@prisma/client';
-
-// Prevent multiple instances of Prisma Client in development
-declare global {
-  var prisma: PrismaClient | undefined;
-}
-
-export const prismaInstance = global.prisma || new PrismaClient();
-
-if (process.env.NODE_ENV !== 'production') {
-  global.prisma = prismaInstance;
-}
-
-export default prismaInstance;

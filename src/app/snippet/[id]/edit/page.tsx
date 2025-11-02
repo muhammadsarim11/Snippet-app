@@ -1,5 +1,5 @@
 import EditSnippet from "@/app/components/EditSnippet"
-import prismaInstance from "../../../../../prisma.config"
+import prismaInstance from "../../../../../prismaClient"
 
 
 

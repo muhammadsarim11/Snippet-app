@@ -1,5 +1,5 @@
 import React from 'react'
-import prismaInstance from '../../prisma.config'
+import prismaInstance from '../../prismaClient'
 import Link from 'next/link'
 
 const page = async () => {
